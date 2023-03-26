@@ -1,4 +1,4 @@
 const main = function (){
-    alert(`bye world`);
+    alert(`Привіт світ`);
 };
 
