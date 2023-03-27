@@ -1,0 +1,70 @@
+*::before {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: "DungGeunMo";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #202124;
+}
+
+/* input */
+#input-wrap {
+    position: relative;
+    margin-bottom: 5px;
+    padding: 0 5px;
+    background: #202124;
+    border: 1px solid #3c4043;
+    text-align: right;
+}
+
+#input {
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 2rem;
+}
+
+
+/* button */
+#button-wrap {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#button-wrap > button {
+    width: calc(25% - 4px);
+    text-align: center;
+    line-height: 5rem;
+    margin: 2px 0;
+    background: #5f6368;
+    color: #f1f1f1;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+    outline: 0;
+    transition: 0.3s;
+}
+
+#button-wrap > button.number {
+    background: #424548;
+}
+
+#button-wrap > button:hover {
+    box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+}
+
+#button-wrap > button#result {
+    background: red;
+}
