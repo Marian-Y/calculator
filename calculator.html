@@ -7,34 +7,48 @@
     <title>calculator</title>
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-
-<script src="js/index.js"></script>
 <body>
-    <div id="calculator">
+    <div class="calculator">
+
         <div id="input-wrap">
-            <div id="input"></div>
+          <div id="error"></div>
+          <div id="input"></div>
         </div>
-        <div id="button-wrap">    
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-            <button class="amt times">/</button>
-    
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="amt minus">*</button>
-    
-            <button class="number">1</button>
-            <button class="number">2</button>
-            <button class="number">3</button>
-            <button class="amt plus">-</button>
-    
-            <button class="number num-0">0</button>
-            <button id="result">=</button>
-            <button id="all-clear">AC</button>
-            <button class="amt plus">+</button>
+        
+        <div class="calculator-keys">
+
+          <button  class="all-clear" onclick="clr(this);">C</button>
+          <button  class="operator" onclick="operator(this)">/</button>
+          <button  class="operator" onclick="operator(this)">*</button>
+          <button  class="operator" onclick="operator(this)">-</button>
+      
+          <button  class="number" onclick="number(this)">7</button>
+          <button  class="number" onclick="number(this)">8</button>
+          <button  class="number" onclick="number(this)">9</button>
+          <button  class="operator plus" onclick="operator(this)">+</button>
+      
+          <button class="number" onclick="number(this)">4</button>
+          <button class="number" onclick="number(this)">5</button>
+          <button class="number" onclick="number(this)">6</button>
+      
+      
+          <button class="number" onclick="number(this)">1</button>
+          <button class="number" onclick="number(this)">2</button>
+          <button class="number" onclick="number(this)">3</button>
+          <button class="equal-sign operator" onclick="calculate();">=</button>
+      
+          <button class="number zero" onclick="number(this)">0</button>
+          <button class="operator" >NUMLK</button>       
+      
         </div>
-    </div>
+      </div>
+
+    <script src="js/index.js"></script>    
 </body>
 </html>
+
+<!--
+ git add .
+ git commit -m "fix coments"
+ git push
+-->

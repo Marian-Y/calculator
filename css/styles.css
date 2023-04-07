@@ -1,70 +1,130 @@
-*::before {
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+html {
+    font-size: 62.5%;
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
+  }
+    
+  *, *::before, *::after {
     margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    background-color:#252525
+  }
+
+.calculator-screen {
+    width: 100%;
+    font-size: 5rem;
+    height: 80px;
+    border: none;
+    background-color: rgb(53, 53, 53);
+    color: #fff;
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 10px;
 }
 
-body {
-    font-family: "DungGeunMo";
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #202124;
-}
-
-/* input */
 #input-wrap {
+    background: red;
     position: relative;
+    width: 100%;
+    height: 80px;
     margin-bottom: 5px;
-    padding: 0 5px;
-    background: #202124;
-    border: 1px solid #3c4043;
     text-align: right;
 }
 
 #input {
-    height: 5rem;
-    line-height: 5rem;
-    font-size: 2rem;
+    height: 80px;
+    line-height: 100px;
+    font-size: 60px;
+    font-family: 'VT323', monospace;
+    color: #EBB55F;
+}
+
+#error {
+    font-size: 25px;
+    position: absolute;
+    right: 5px;
+    top: 0.25rem;
+    color: rgb(255, 0, 0);
+    font-family: 'VT323', monospace;
 }
 
 
-/* button */
-#button-wrap {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-around;
+.calculator {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 400px;
 }
 
-#button-wrap > button {
-    width: calc(25% - 4px);
-    text-align: center;
-    line-height: 5rem;
-    margin: 2px 0;
-    background: #5f6368;
-    color: #f1f1f1;
-    border-radius: 4px;
-    cursor: pointer;
-    user-select: none;
-    outline: 0;
-    transition: 0.3s;
+
+
+button {
+text-align: center;
+line-height: 7rem;
+margin: 2px 0;
+background: #5f6368;
+color: #f1f1f1;
+border-radius: 4px;
+cursor: pointer;
+user-select: none;
+outline: 0;
+transition: 0.3s;
+font-size: 30px;
+font-family: 'VT323', monospace;
 }
 
-#button-wrap > button.number {
-    background: #424548;
+button:hover {
+box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
 }
 
-#button-wrap > button:hover {
-    box-shadow: inset 0px 0px 15px 0px rgba(0, 0, 0, 0.3);
+.number {
+background: #424548;;
 }
 
-#button-wrap > button#result {
-    background: red;
+
+.plus{
+grid-area: 2 / 5 / 4 / 4;
 }
+
+.zero{
+grid-area: 6 / 3 / 5 / 1;
+}
+
+.all-clear {
+background-color: red;
+border-color: #b0353a;
+}
+
+.all-clear:hover {
+background-color: #f17377;
+}
+
+.equal-sign {
+background-color: #2e86c0;
+border-color: #337cac;
+color: #fff;
+height: 100%;
+grid-area: 6 / 4 / 4 / 4;
+}
+
+.equal-sign:hover {
+background-color: #4e9ed4;
+}
+
+.calculator-keys {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+grid-gap: 10px;
+padding: 10px 0px 0px 0px;
+}
+
+/* 
+1) наверстати калькулятор 
+2) Підключити кнопки вводу і записати значення вводу 
+3) підключити кнопки операції 
+4) зробити операції із значеннями із кроку 2
+5) відобразити  результат у калькуляторі
+*/
