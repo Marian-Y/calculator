@@ -17,7 +17,8 @@ function number(button){
   var last = almostLastChar + lastChar
   
   console.log(`inputString`, inputString);
-  console.log(`lastChar`, last);
+  console.log(`lastChar`, lastChar);
+  console.log(`last`, last);
 
   switch (true){
     case [`/0`,`*0`,`-0`,`+0`].includes(last):
@@ -25,15 +26,16 @@ function number(button){
       newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
       input.innerHTML = newNumb;
     break
-      // case inputString.length == 0: 
-      // console.log(`case 2`);
-      // throw new Error(noFirstNumber);
+    case [`0`].includes(lastChar) && inputString.length == 1:
+      console.log(`case 2`)
+      newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
+      input.innerHTML = newNumb;
+    break
     default:
         input.innerHTML += button.innerHTML;
         error.innerHTML = ``;
         console.log(`DEFAULT`)
   } 
-  
 }
 
 function operator(button){
@@ -140,53 +142,12 @@ function myMove() {
   const newspaperTiming = {
     duration: 2000,
     iterations: 1,
-  };
-  
+  }; 
 
-  // newspaper.addEventListener("click", () => {
-    newspaper.animate(newspaperSpinning, newspaperTiming);
-  // });
-
+  newspaper.animate(newspaperSpinning, newspaperTiming);
 
 }
 
-try {
-  calculate()
-} catch (error) {
-  switch(true){
-    case (error.message == noFirstNumber):
-      
-  }
-}
 
-// let inputString = `123455`
-// let six = `6`;
-
-// let sub = inputString.subinputString(0, inputString.length - 1) + six;
-
-// console.log(inputString);
-// console.log(sub);
-
-// let miracle = `11+22-33/44*555-55`
-
-
-// let sort = da.forEach(function(value) {
-  
-// });
-
-// let filters = [`-`,`+`,`/`,`*`]
-// let ar = arr.split(/\+|\-|\*|\=|\//g);
-// let a = arr
-//   .split(/[0-9]/g)
-//   .forEach((value) =>{
-//     console.log(value)
-//   });
-// // let o = a
-
-// console.log(`arr`, arr);
-// console.log(`ar`,ar);
-// console.log(`a`,a);
-// console.log(arr);
-// console.log(o);
 
 
