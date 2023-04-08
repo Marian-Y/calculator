@@ -85,7 +85,6 @@ function calculate(){
   let separation = miracle.split(/(\-|\+|\*|\/)/);
   let number = [];
   let operator = [];
-  console.log(separation);
   
   if (separation[0] == ''){
     separation.splice(0, 3, separation[1] + separation[2]);
@@ -98,36 +97,26 @@ function calculate(){
       operator.push(separation[i]);
     }
   }
-  
-  console.log(number);
-  console.log(operator);  
-
  
   var divide = operator.indexOf(`/`);
   while (divide != -1) {
-    console.log(`divide`, number);
     number.splice(divide, 2, number[divide] / number[divide + 1]);
     operator.splice(divide, 1);
     divide = operator.indexOf("/");
-    console.log(`divide`, number);
   }
 
   var multiply = operator.indexOf(`*`);
   while (multiply != -1) {
-    console.log(`multiply`, number);
     number.splice(multiply, 2, number[multiply] * number[multiply + 1]);
     operator.splice(multiply, 1);
     multiply = operator.indexOf("*");
-    console.log(`multiply`, number);
   }
 
   var minus = operator.indexOf(`-`);
   while (minus != -1) {
-    console.log(`minus`, number);
     number.splice(minus, 2, number[minus] - number[minus + 1]);
     operator.splice(minus, 1);
     minus = operator.indexOf("-");
-    console.log(`minus`, number);
   }
   
   var plus = operator.indexOf(`+`);
@@ -137,7 +126,6 @@ function calculate(){
     plus = operator.indexOf("+");
   }
   
-  console.log(`result`, number);
   input.innerHTML = ``;
   input.innerHTML += number ;
 }
@@ -196,8 +184,4 @@ function myMove() {
 
   error.animate(errorSpinning, errorTiming);
   inputString = input.innerHTML;
-
-  var lastChar = inputString[inputString.length - 1];
-
-
 }
