@@ -54,10 +54,10 @@ try {
       newOper = inputString.substring(0, inputString.length - 1) + button.innerHTML;
       input.innerHTML = newOper;
     break;
-    case [`0`].includes(lastChar) && inputString.length == 1:
-      error.innerHTML = `Після нуля не можу бути оператора`;
-      myMove();
-      throw new Error(zeroOperator);
+    // case [`0`].includes(lastChar) && inputString.length == 1:
+    //   error.innerHTML = `Після нуля не можу бути оператора`;
+    //   myMove();
+    //   throw new Error(zeroOperator);
     case inputString.length == 0:       
       error.innerHTML = `Оператор не може бути першим`;
       throw new Error(noFirstNumber);
@@ -71,9 +71,9 @@ try {
     case (error.message == noFirstNumber):
       myMove();
     break;
-    case (error.message == zeroOperator):
-      myMove();
-    break;
+    // case (error.message == zeroOperator):
+    //   myMove();
+    // break;
   }
 }
 
@@ -86,6 +86,14 @@ function calculate(){
   let separation = miracle.split(/(\+|\-|\*|\/)/);
   let number = [];
   let operator = [];
+  
+  console.log(`separation`,separation);
+  console.log(`number`,number);
+  console.log(`operator`,operator);
+
+  if (separation[0] == ''){
+    separation.splice(0, 3, separation[1] + separation[2]);
+  }
 
   for (var i = 0; i < separation.length; i++) {
     if(i % 2 === 0) {
@@ -189,3 +197,9 @@ function myMove() {
 
 
 }
+
+const array1 = ['a', 'b', 'c'];
+const array2 = ['d', 'e', 'f'];
+const array3 = array1.splice(0, array1[0] + array1[2]);
+
+console.log(array3);
