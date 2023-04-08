@@ -82,50 +82,64 @@ try {
 function calculate(){  
   var miracle = input.innerHTML;
   
-  let separation = miracle.split(/(\+|\-|\*|\/)/);
+  let separation = miracle.split(/(\-|\+|\*|\/)/);
   let number = [];
   let operator = [];
-
+  console.log(separation);
+  
   if (separation[0] == ''){
     separation.splice(0, 3, separation[1] + separation[2]);
   }
-
+  
   for (var i = 0; i < separation.length; i++) {
     if(i % 2 === 0) {
-      number.push(separation[i]);
+      number.push(Number(separation[i]));
     } else {
       operator.push(separation[i]);
     }
   }
   
+  console.log(number);
+  console.log(operator);  
+
+ 
   var divide = operator.indexOf(`/`);
-  var multiply = operator.indexOf(`*`);
-  var minus = operator.indexOf(`-`);
-  var plus = operator.indexOf(`+`);
-      
   while (divide != -1) {
-    number.splice(divide, 2, result = Number(number[divide]) / Number(number[divide + 1]));
+    console.log(`divide`, number);
+    number.splice(divide, 2, number[divide] / number[divide + 1]);
     operator.splice(divide, 1);
     divide = operator.indexOf("/");
+    console.log(`divide`, number);
   }
+
+  var multiply = operator.indexOf(`*`);
   while (multiply != -1) {
-    number.splice(multiply, 2, result = Number(number[multiply]) * Number(number[multiply + 1]));
+    console.log(`multiply`, number);
+    number.splice(multiply, 2, number[multiply] * number[multiply + 1]);
     operator.splice(multiply, 1);
     multiply = operator.indexOf("*");
+    console.log(`multiply`, number);
   }
+
+  var minus = operator.indexOf(`-`);
   while (minus != -1) {
-    number.splice(minus, 2, result = Number(number[minus]) - Number(number[minus + 1]));
+    console.log(`minus`, number);
+    number.splice(minus, 2, number[minus] - number[minus + 1]);
     operator.splice(minus, 1);
     minus = operator.indexOf("-");
+    console.log(`minus`, number);
   }
+  
+  var plus = operator.indexOf(`+`);
   while (plus != -1) {
-    number.splice(plus, 2, result = Number(number[plus]) + Number(number[plus + 1]));
+    number.splice(plus, 2, number[plus] + number[plus + 1]);
     operator.splice(plus, 1);
     plus = operator.indexOf("+");
   }
-
+  
+  console.log(`result`, number);
   input.innerHTML = ``;
-  input.innerHTML += result ;
+  input.innerHTML += number ;
 }
 
 function allClear(){
@@ -187,9 +201,3 @@ function myMove() {
 
 
 }
-
-const array1 = ['a', 'b', 'c'];
-const array2 = ['d', 'e', 'f'];
-const array3 = array1.splice(0, array1[0] + array1[2]);
-
-console.log(array3);
