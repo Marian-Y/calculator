@@ -14,7 +14,6 @@ let noFirstNumber = 402,
 
 
 function number(button){
-  // input.innerHTML += button.innerHTML
   inputString = input.innerHTML;
 
   var lastChar = inputString[inputString.length - 1];
@@ -86,10 +85,6 @@ function calculate(){
   let separation = miracle.split(/(\+|\-|\*|\/)/);
   let number = [];
   let operator = [];
-  
-  console.log(`separation`,separation);
-  console.log(`number`,number);
-  console.log(`operator`,operator);
 
   if (separation[0] == ''){
     separation.splice(0, 3, separation[1] + separation[2]);
@@ -103,9 +98,6 @@ function calculate(){
     }
   }
   
-  console.log(number);
-  console.log(operator);
-
   var divide = operator.indexOf(`/`);
   var multiply = operator.indexOf(`*`);
   var minus = operator.indexOf(`-`);
@@ -145,8 +137,6 @@ function clearLast(){
 try{
 
   inputString = input.innerHTML;
-
-  var lastChar = inputString[inputString.length - 1];
   
   newStr = inputString.substring(0, inputString.length - 1);
   input.innerHTML = newStr;
