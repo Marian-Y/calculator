@@ -9,15 +9,15 @@
 </head>
 <body>
     <div class="calculator">
-
+      
         <div id="input-wrap">
-          <div id="error"></div>
-          <div id="input"></div>
+          <div id="error"></div>          
+          <div id="input">0</div>
         </div>
         
         <div class="calculator-keys">
 
-          <button  class="all-clear" onclick="clr(this);">C</button>
+          <button  class="all-clear" onclick="allClear(this);">AC</button>
           <button  class="operator" onclick="operator(this)">/</button>
           <button  class="operator" onclick="operator(this)">*</button>
           <button  class="operator" onclick="operator(this)">-</button>
@@ -38,7 +38,7 @@
           <button class="equal-sign operator" onclick="calculate();">=</button>
       
           <button class="number zero" onclick="number(this)">0</button>
-          <button class="operator" >NUMLK</button>       
+          <button class="clear" onclick="clearLast(this);">C</button>     
       
         </div>
       </div>

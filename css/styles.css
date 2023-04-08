@@ -25,7 +25,7 @@ html {
 }
 
 #input-wrap {
-    background: red;
+    /* background: red; */
     position: relative;
     width: 100%;
     height: 80px;
@@ -43,9 +43,14 @@ html {
 
 #error {
     font-size: 25px;
+    text-align: center;
     position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     right: 5px;
     top: 0.25rem;
+    background: rgba(255, 255, 255, 0);
     color: rgb(255, 0, 0);
     font-family: 'VT323', monospace;
 }
@@ -120,11 +125,3 @@ grid-template-columns: repeat(4, 1fr);
 grid-gap: 10px;
 padding: 10px 0px 0px 0px;
 }
-
-/* 
-1) наверстати калькулятор 
-2) Підключити кнопки вводу і записати значення вводу 
-3) підключити кнопки операції 
-4) зробити операції із значеннями із кроку 2
-5) відобразити  результат у калькуляторі
-*/

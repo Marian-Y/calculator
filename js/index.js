@@ -1,66 +1,81 @@
-var input = document.getElementById('input');
-var error = document.getElementById('error');
+var input = document.getElementById('input'),
+    error = document.getElementById('error');
 
-let noFirstNumber = 399,
+var inputString,
+    newNumb,
+    newStr,
+    newOper,
+    result;
 
-    wrongNumberError = 404,
+let noFirstNumber = 402,
+    zeroOperator = 403,
+    noStringWalue = 404;
 
-    numberZero = 0;
 
 
 function number(button){
   // input.innerHTML += button.innerHTML
   inputString = input.innerHTML;
+
   var lastChar = inputString[inputString.length - 1];
   var almostLastChar = inputString[inputString.length - 2];
 
-  var last = almostLastChar + lastChar
+  var last = almostLastChar + lastChar;
   
-  console.log(`inputString`, inputString);
-  console.log(`lastChar`, lastChar);
-  console.log(`last`, last);
-
   switch (true){
     case [`/0`,`*0`,`-0`,`+0`].includes(last):
-      console.log(`case 1`)
       newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
       input.innerHTML = newNumb;
-    break
+    break;
     case [`0`].includes(lastChar) && inputString.length == 1:
-      console.log(`case 2`)
       newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
       input.innerHTML = newNumb;
-    break
+      error.innerHTML = ``;
+    break;
     default:
         input.innerHTML += button.innerHTML;
         error.innerHTML = ``;
-        console.log(`DEFAULT`)
   } 
 }
 
 function operator(button){
-
-  // Що не так з var в при викалика у другу функції
+try {
+  // Що не так з var в при виклику у другу функції
 
   inputString = input.innerHTML;
-  console.log(inputString);
+
   var lastChar = inputString[inputString.length - 1];
-  console.log(`lastChar`, lastChar);
+  var almostLastChar = inputString[inputString.length - 2];
+
+  var last = almostLastChar + lastChar;
 
   switch (true){
     case [`+`,`-`,`*`,`/`].includes(lastChar):
-      console.log(`case 1`)
       newOper = inputString.substring(0, inputString.length - 1) + button.innerHTML;
       input.innerHTML = newOper;
-    break
-    case inputString.length == 0: 
+    break;
+    case [`0`].includes(lastChar) && inputString.length == 1:
+      error.innerHTML = `Після нуля не можу бути оператора`;
+      myMove();
+      throw new Error(zeroOperator);
+    case inputString.length == 0:       
       error.innerHTML = `Оператор не може бути першим`;
-      myMove()
       throw new Error(noFirstNumber);
     default:
       input.innerHTML += button.innerHTML;
-      console.log(`DEFAULT`)
+      error.innerHTML = ``;
   }
+
+} catch (error) {
+  switch(true) {
+    case (error.message == noFirstNumber):
+      myMove();
+    break;
+    case (error.message == zeroOperator):
+      myMove();
+    break;
+  }
+}
 
 }
 
@@ -80,13 +95,13 @@ function calculate(){
     }
   }
   
-  console.log(number)
-  console.log(operator)
+  console.log(number);
+  console.log(operator);
 
-  var divide = operator.indexOf(`/`)
-  var multiply = operator.indexOf(`*`)
-  var minus = operator.indexOf(`-`)
-  var plus = operator.indexOf(`+`)
+  var divide = operator.indexOf(`/`);
+  var multiply = operator.indexOf(`*`);
+  var minus = operator.indexOf(`-`);
+  var plus = operator.indexOf(`+`);
       
   while (divide != -1) {
     number.splice(divide, 2, result = Number(number[divide]) / Number(number[divide + 1]));
@@ -113,18 +128,41 @@ function calculate(){
   input.innerHTML += result ;
 }
 
-function clr(){
+function allClear(){
   input.innerHTML = ``;
-
+  error.innerHTML = ``;
 }
 
+function clearLast(){
+try{
 
+  inputString = input.innerHTML;
 
-const newspaper = document.getElementById("error");
+  var lastChar = inputString[inputString.length - 1];
+  
+  newStr = inputString.substring(0, inputString.length - 1);
+  input.innerHTML = newStr;
+
+  if (inputString.length == 0){
+    error.innerHTML = `Тут вже пусто`;
+    throw new Error(noStringWalue);
+  }
+
+} catch (error) {
+  switch(true) {
+    case (error.message == noStringWalue):
+      myMove();
+    break;
+    // case (error.message == zeroOperator):
+    //   myMove();
+    // break;
+  }
+}
+}
 
 function myMove() {
 
-  const newspaperSpinning = [
+  const errorSpinning = [
     { color: `yellow`,
       transform: `scale(0)`,
       opacity: `0`,
@@ -139,15 +177,15 @@ function myMove() {
       opacity: `1`, },
   ];
   
-  const newspaperTiming = {
+  const errorTiming = {
     duration: 2000,
     iterations: 1,
   }; 
 
-  newspaper.animate(newspaperSpinning, newspaperTiming);
+  error.animate(errorSpinning, errorTiming);
+  inputString = input.innerHTML;
+
+  var lastChar = inputString[inputString.length - 1];
+
 
 }
-
-
-
-
