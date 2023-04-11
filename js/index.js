@@ -13,21 +13,22 @@ let noFirstNumber = 402,
 
 
 
-function number(button){
+function number(button){  
+
   inputString = input.innerHTML;
-
-  var lastChar = inputString[inputString.length - 1];
-  var almostLastChar = inputString[inputString.length - 2];
-
-  var last = almostLastChar + lastChar;
+  var indexLast = inputString.length - 1;
+  // Переписати на slice  19 20
+  var lastChar = inputString[indexLast];
+  var twoLastChar = inputString.slice(-2);
+  
   
   switch (true){
-    case [`/0`,`*0`,`-0`,`+0`].includes(last):
-      newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
+    case [`/0`,`*0`,`-0`,`+0`].includes(twoLastChar):
+      newNumb = inputString.substring(0, indexLast) + button.innerHTML;
       input.innerHTML = newNumb;
     break;
     case [`0`].includes(lastChar) && inputString.length == 1:
-      newNumb = inputString.substring(0, inputString.length - 1) + button.innerHTML;
+      newNumb = inputString.substring(0, indexLast) + button.innerHTML;
       input.innerHTML = newNumb;
       error.innerHTML = ``;
     break;
@@ -39,24 +40,16 @@ function number(button){
 
 function operator(button){
 try {
-  // Що не так з var в при виклику у другу функції
 
   inputString = input.innerHTML;
-
-  var lastChar = inputString[inputString.length - 1];
-  var almostLastChar = inputString[inputString.length - 2];
-
-  var last = almostLastChar + lastChar;
+  var indexLast = inputString.length - 1;
+  var lastChar = inputString[indexLast];
 
   switch (true){
     case [`+`,`-`,`*`,`/`].includes(lastChar):
-      newOper = inputString.substring(0, inputString.length - 1) + button.innerHTML;
+      newOper = inputString.substring(0, indexLast) + button.innerHTML;
       input.innerHTML = newOper;
     break;
-    // case [`0`].includes(lastChar) && inputString.length == 1:
-    //   error.innerHTML = `Після нуля не можу бути оператора`;
-    //   myMove();
-    //   throw new Error(zeroOperator);
     case inputString.length == 0:       
       error.innerHTML = `Оператор не може бути першим`;
       throw new Error(noFirstNumber);
@@ -70,9 +63,6 @@ try {
     case (error.message == noFirstNumber):
       myMove();
     break;
-    // case (error.message == zeroOperator):
-    //   myMove();
-    // break;
   }
 }
 
@@ -80,9 +70,9 @@ try {
 
 
 function calculate(){  
-  var miracle = input.innerHTML;
+  var value = input.innerHTML;
   
-  let separation = miracle.split(/(\-|\+|\*|\/)/);
+  let separation = value.split(/(\-|\+|\*|\/)/);
   let number = [];
   let operator = [];
   
@@ -153,9 +143,6 @@ try{
     case (error.message == noStringWalue):
       myMove();
     break;
-    // case (error.message == zeroOperator):
-    //   myMove();
-    // break;
   }
 }
 }
