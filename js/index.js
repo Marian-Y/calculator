@@ -9,7 +9,7 @@ var inputString,
 
 let noFirstNumber = 402,
     zeroOperator = 403,
-    noStringWalue = 404;
+    noStringValue = 404;
 
 
 
@@ -135,12 +135,12 @@ try{
 
   if (inputString.length == 0){
     error.innerHTML = `Тут вже пусто`;
-    throw new Error(noStringWalue);
+    throw new Error(noStringValue);
   }
 
 } catch (error) {
   switch(true) {
-    case (error.message == noStringWalue):
+    case (error.message == noStringValue):
       myMove();
     break;
   }
